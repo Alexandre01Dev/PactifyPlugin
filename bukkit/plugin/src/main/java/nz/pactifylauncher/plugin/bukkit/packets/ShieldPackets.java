@@ -68,7 +68,7 @@ public class ShieldPackets {
                                         tracker.setBlocking(true);
 
                                         // Check if the shield is already in the offhand + Check if player is player has launcher
-                                        if (!showShieldWhenSwordInHand && tracker.getItemInSecondHand() == null && playersService.hasLauncher(wrapper.user().getProtocolInfo().getUuid())) {
+                                        if (!showShieldWhenSwordInHand && tracker.getItemInSecondHand() == null && !playersService.hasLauncher(wrapper.user().getProtocolInfo().getUuid())) {
                                             // Set shield in offhand when interacting with main hand
                                             Item shield = new DataItem(442, (byte) 1, (short) 0, null);
                                             tracker.setSecondHand(shield);
