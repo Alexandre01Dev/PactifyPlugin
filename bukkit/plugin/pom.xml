@@ -15,7 +15,19 @@
         <scriptus.scmDirectory>../../</scriptus.scmDirectory>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>viaversion-repo</id>
+            <url>https://repo.viaversion.com</url>
+        </repository>
+    </repositories>
     <dependencies>
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>viaversion</artifactId>
+            <version>LATEST</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>pactify-plugin-bukkit-api</artifactId>

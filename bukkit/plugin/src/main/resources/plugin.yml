@@ -1,8 +1,9 @@
-name: PactifyPlugin
+name: AZLauncherFIX
 main: nz.pactifylauncher.plugin.bukkit.PactifyPlugin
 version: ${describe}
 authors: [PactifyLauncherExamples]
-
+depend:
+  - ViaVersion
 commands:
   pactifycheck:
     aliases: [pacheck]

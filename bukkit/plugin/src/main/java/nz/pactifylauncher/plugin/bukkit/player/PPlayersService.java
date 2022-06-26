@@ -1,10 +1,17 @@
 package nz.pactifylauncher.plugin.bukkit.player;
 
+import com.viaversion.viaversion.api.Via;
+import com.viaversion.viaversion.api.ViaAPI;
+import com.viaversion.viaversion.api.ViaManager;
+import com.viaversion.viaversion.bungee.service.ProtocolDetectorService;
+import com.viaversion.viaversion.protocols.protocol1_9to1_8.Protocol1_9To1_8;
+import com.viaversion.viaversion.protocols.protocol1_9to1_8.ServerboundPackets1_9;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import nz.pactifylauncher.plugin.bukkit.PactifyPlugin;
 import nz.pactifylauncher.plugin.bukkit.api.player.PactifyPlayer;
 import nz.pactifylauncher.plugin.bukkit.api.player.PlayersService;
+import nz.pactifylauncher.plugin.bukkit.packets.ShieldPackets;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -41,7 +48,13 @@ public class PPlayersService implements PlayersService, Listener {
             } catch (Throwable t) {
                 plugin.getLogger().log(Level.WARNING, "An error occurred initializing " + player.getName() + ":", t);
             }
+
         }
+        ViaManager manager = Via.getManager(); //Get manager of ViaVersion
+
+        Protocol1_9To1_8 protocol1_9To1_8 = manager.getProtocolManager().getProtocol(Protocol1_9To1_8.class);
+        assert protocol1_9To1_8 != null;
+        ShieldPackets.register(protocol1_9To1_8); // Register a custom packet serverbound in ViaVersion
     }
 
     public void disable() {
